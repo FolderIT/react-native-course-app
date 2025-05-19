@@ -23,6 +23,9 @@ const MainTabs = () => (
       borderTopWidth: 1.5,
       borderTopColor: colors.secondary,
     },
+    tabBarLabelStyle: {
+      fontSize: 12,
+    },
     tabBarButton: (props) => <TouchableOpacity {...props} />,
     tabBarActiveTintColor: colors.primary,
     tabBarInactiveTintColor: colors.secondary,
