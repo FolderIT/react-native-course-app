@@ -1,14 +1,24 @@
-import { View, Text, Image } from 'react-native';
+import { TouchableOpacity, Text, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import Product from '../../types/Product';
+import { RootStackParamList } from '../../navigation/RootStack';
 import styles from './styles';
 
-const ProductCard = ({product}: {product: Product}) => {
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'MainTabs'>;
+
+const ProductCard = ({ product }: { product: Product }) => {
+  const navigation = useNavigation<NavigationProp>();
+
   return (
-    <View style={styles.container}>
-      <Image source={{uri: product.thumbnail}} style={styles.image} />
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => navigation.navigate('Details', { product })}
+    >
+      <Image source={{ uri: product.thumbnail }} style={styles.image} />
       <Text style={styles.title} >{product.title}</Text>
       <Text style={styles.price}>${product.price}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
