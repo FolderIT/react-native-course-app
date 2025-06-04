@@ -4,4 +4,8 @@ export default interface Product {
   thumbnail: string,
   price: number,
   discountPercentage: number
-};
+}
+
+export interface CartItem extends Product {
+  quantity: number;
+}

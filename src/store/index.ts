@@ -15,7 +15,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import productSlice from './products/slice';
 
 const rootReducer = combineReducers({
-  counter: productSlice,
+  products: productSlice,
 });
 
 const persistConfig = {
@@ -37,6 +37,8 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+// persistor.purge();
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
